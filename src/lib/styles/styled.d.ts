@@ -11,17 +11,18 @@ declare module 'styled-components' {
 
     colors: {
       bold: string;
+      disabledbord: string;
       main: string;
       sub: string;
+      button_main_color1: string;
+      button_main_color2: string;
+      button_sub_color1: string;
+      button_sub_color2: string;
       placeholder: string;
       white: string;
       background: string;
       bgDivider: string;
-      disabledbg: string;
-      disabledborder: string;
       scrollBar: string;
-      button_color1: string;
-      button_color2: string;
       primary60: string;
       primary40: string;
       primary20: string;
