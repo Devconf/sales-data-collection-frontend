@@ -25,27 +25,27 @@ export const StyledButton = styled.div<StyledButtonProps>`
   font-size: 14px;
   border-radius: 32px;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.button_color1};
-  border-color: ${({ theme }) => theme.colors.button_color1};
+  background: ${({ theme }) => theme.colors.button_main_color1};
+  border-color: ${({ theme }) => theme.colors.button_main_color1};
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   :focus {
     color: ${({ theme }) => theme.colors.white};
-    background: ${({ theme }) => theme.colors.button_color2};
-    border-color: ${({ theme }) => theme.colors.button_color2};
+    background: ${({ theme }) => theme.colors.button_main_color2};
+    border-color: ${({ theme }) => theme.colors.button_main_color2};
   }
   &:active {
     color: ${({ theme }) => theme.colors.white};
-    background: ${({ theme }) => theme.colors.button_color2};
-    border-color: ${({ theme }) => theme.colors.button_color2};
+    background: ${({ theme }) => theme.colors.button_main_color2};
+    border-color: ${({ theme }) => theme.colors.button_main_color2};
   }
   ${(props) =>
     props.disabled &&
     css`
       color: rgba(0, 0, 0, 0.25);
-      background: ${({ theme }) => theme.colors.disabledbg};
-      border-color: ${({ theme }) => theme.colors.disabledborder};
+      background: ${({ theme }) => theme.colors.disabledbord};
+      border-color: ${({ theme }) => theme.colors.disabledbord};
       text-shadow: none;
       box-shadow: none;
       cursor: not-allowed;
@@ -53,8 +53,8 @@ export const StyledButton = styled.div<StyledButtonProps>`
       :focus,
       :active {
         color: rgba(0, 0, 0, 0.25);
-        background: ${({ theme }) => theme.colors.disabledbg};
-        border-color: ${({ theme }) => theme.colors.disabledborder};
+        background: ${({ theme }) => theme.colors.disabledbord};
+        border-color: ${({ theme }) => theme.colors.disabledbord};
         text-shadow: none;
         box-shadow: none;
       }
@@ -104,8 +104,8 @@ export const StyledButton = styled.div<StyledButtonProps>`
       :focus,
       :active {
         color: ${({ theme }) => theme.colors.sub};
-        background: ${({ theme }) => theme.colors.disabledbg};
-        border-color: ${({ theme }) => theme.colors.disabledbg};
+        background: ${({ theme }) => theme.colors.disabledbord};
+        border-color: ${({ theme }) => theme.colors.disabledbord};
       }
     `}
     
