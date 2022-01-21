@@ -16,13 +16,12 @@ export const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   min-width: 0;
   padding: 4px 11px;
-  color: rgba(0, 0, 0, 0.85);
+  color: black;
   font-size: 14px;
   line-height: 1.5715;
   background-color: ${({ theme }) => theme.colors.white};
-  background-image: none;
-  border: 1px solid ${({ theme }) => theme.colors.disabledbord};
-  border-radius: 2px;
+  border: 1px solid ${({ theme }) => theme.colors.bold};
+  border-radius: 20px;
   transition: all 0.3s;
   &:-moz-placeholder {
     opacity: 1;
@@ -46,17 +45,16 @@ export const StyledInput = styled.input<StyledInputProps>`
     border-color: ${({ theme }) => theme.colors.bold};
     border-right-width: 1px !important;
     outline: 0;
-    box-shadow: 0 0 0 2px rgba(0, 98, 65, 0.2);
   }
   ${(props) =>
     props.disabled &&
     css`
       color: rgba(0, 0, 0, 0.25);
-      background-color: ${({ theme }) => theme.colors.disabledbord};
+      background-color: ${({ theme }) => theme.colors.white};
       cursor: not-allowed;
       opacity: 1;
       &:hover {
-        border-color: ${({ theme }) => theme.colors.disabledbord};
+        border-color: ${({ theme }) => theme.colors.white};
         border-right-width: 1px !important;
       }
     `}
