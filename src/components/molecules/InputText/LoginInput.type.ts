@@ -1,5 +1,5 @@
-import { InputProps } from "@components/atoms/Input/Input.type";
+import {InputProps} from "@components/atoms/Input/Input.type";
 
-export interface LoginInputProps extends InputProps{
-    
+export interface LoginInputProps extends InputProps {
+
 }

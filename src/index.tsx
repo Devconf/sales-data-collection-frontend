@@ -1,12 +1,22 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-ReactDOM.render( 
-    <React.StrictMode>
-      <App /> 
-    </React.StrictMode>,  
-    document.getElementById("root")
-  );
-  // ReactDOM이 위 태그들을 해당 root DOM에 Render한다.
-  // <App/> 실제로 화면에 나타나는 컴포넌트
+import { ThemeProvider } from 'styled-components';
+import Routes from '@pages/Routes';
+import theme from '@styles/theme';
+import GlobalStyle from '@styles/globalStyle';
+import FontStyles from '@styles/fonts/fonts';
+
+const queryClient = new QueryClient();
+
+ReactDOM.render(
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme}>
+      <FontStyles />
+      <GlobalStyle />
+      <Routes />
+    </ThemeProvider>
+  </QueryClientProvider>,
+  document.getElementById('root'),
+);

@@ -1,5 +1,5 @@
-import { InputProps } from "@components/atoms/Input/Input.type";
+import {InputProps} from "@components/atoms/Input/Input.type";
 
-export interface SearchInputProps extends InputProps{
+export interface SearchInputProps extends InputProps {
     label: string;
 }
