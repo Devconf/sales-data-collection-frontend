@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { InputProps } from './Input.type';
+import styled, {css} from 'styled-components';
+import {InputProps} from './Input.type';
 import theme from '@styles/theme';
 
 type StyledInputProps = Pick<InputProps, 'disabled' | 'error'>;
@@ -19,8 +19,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   color: black;
   font-size: 14px;
   line-height: 1.5715;
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.bold};
+  background-color: ${({theme}) => theme.colors.white};
+  border: 1px solid ${({theme}) => theme.colors.bold};
   border-radius: 20px;
   transition: all 0.3s;
   &:-moz-placeholder {
@@ -31,18 +31,18 @@ export const StyledInput = styled.input<StyledInputProps>`
     text-overflow: ellipsis;
   }
   &:-ms-input-placeholder {
-    color: ${({ theme }) => theme.colors.placeholder};
+    color: ${({theme}) => theme.colors.placeholder};
     text-overflow: ellipsis;
   }
   &::placeholder {
-    color: ${({ theme }) => theme.colors.placeholder};
+    color: ${({theme}) => theme.colors.placeholder};
   }
   &:hover {
-    border-color: ${({ theme }) => theme.colors.bold};
+    border-color: ${({theme}) => theme.colors.bold};
     border-right-width: 1px !important;
   }
   &:focus {
-    border-color: ${({ theme }) => theme.colors.bold};
+    border-color: ${({theme}) => theme.colors.bold};
     border-right-width: 1px !important;
     outline: 0;
   }
@@ -50,11 +50,11 @@ export const StyledInput = styled.input<StyledInputProps>`
     props.disabled &&
     css`
       color: rgba(0, 0, 0, 0.25);
-      background-color: ${({ theme }) => theme.colors.white};
+      background-color: ${({theme}) => theme.colors.white};
       cursor: not-allowed;
       opacity: 1;
       &:hover {
-        border-color: ${({ theme }) => theme.colors.white};
+        border-color: ${({theme}) => theme.colors.white};
         border-right-width: 1px !important;
       }
     `}
@@ -67,7 +67,7 @@ export const StyledInput = styled.input<StyledInputProps>`
         border-right-width: 1px !important;
       }
       &:focus {
-        border-color: ${({ theme }) => theme.colors.danger1};
+        border-color: ${({theme}) => theme.colors.danger1};
         border-right-width: 1px !important;
         outline: 0;
         box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);

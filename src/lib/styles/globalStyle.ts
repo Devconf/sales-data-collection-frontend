@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import {createGlobalStyle} from 'styled-components';
+import {normalize} from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
 	${normalize}
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-		color: ${({ theme }) => theme.colors.main}
+		color: ${({theme}) => theme.colors.main}
 	}
 	#root {
 		height: 100%;
