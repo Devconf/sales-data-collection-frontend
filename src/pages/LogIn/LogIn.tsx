@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { callLoginApi } from '../../apis/userAPI/user.api';
 import InputText from '@components/molecules/InputText';
 import Button from '@components/atoms/Button'
-import {Wrapper,LogInWrapper,LogInButtonWrapper,ErrorMessage} from './LogIn.style';
+import {Wrapper,Label,LogInWrapper,LogInButtonWrapper,SignUpButtonWrapper,ErrorMessage} from './LogIn.style';
 import { useMultipleInputs } from '../../hooks/UseMultipleInputs';
 import {
     emailValidation,
@@ -60,8 +60,13 @@ const LogIn: React.FC = () =>{
         }
       };
 
+    const onClickSignUpButton= ()=>{
+        history.push('/signUp')
+    }
+
     return (
         <Wrapper>
+            <Label>로그인</Label>
             <LogInWrapper>
                 <InputText 
                     type='email' 
@@ -89,6 +94,11 @@ const LogIn: React.FC = () =>{
                     LogIn
                 </Button>
             </LogInButtonWrapper>
+            <SignUpButtonWrapper>
+                <Button rect onClick={onClickSignUpButton}>
+                    SignUp
+                </Button>
+            </SignUpButtonWrapper>
         </Wrapper>
     );
 };

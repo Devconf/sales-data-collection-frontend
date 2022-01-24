@@ -13,7 +13,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   font-feature-settings: 'tnum';
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 90%;
   min-width: 0;
   padding: 4px 11px;
   color: black;

@@ -3,9 +3,11 @@ import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { callSignUpApi } from '../../apis/userAPI/user.api';
 import InputText from '@components/molecules/InputText';
+import Select from '@components/atoms/Select';
 import Button from '@components/atoms/Button'
 import {Wrapper,ErrorMessage} from './SignUp.style';
 import { useMultipleInputs } from '../../hooks/UseMultipleInputs';
+import { useSelect } from '../../hooks/useSelect';
 import {
     companyNameValidation,
     businessNumValidation,
@@ -13,6 +15,12 @@ import {
     passwordValidation,
     passwordConfirmValidation
   } from '../../lib/helpers/Validation';
+
+
+const OPTIONS=  [
+	{ value: "ADMIN", name: "본사" },
+	{ value: "USER", name: "자회사" },
+];
 
 const SignUp: React.FC = () =>{
     const history = useHistory();
@@ -25,6 +33,9 @@ const SignUp: React.FC = () =>{
       password: '',
       passwordConfirm:''
     });
+
+    //default Select 정한다.
+    const [selectedName, onChangeSelection] = useSelect('USER');
 
 
     const [error, setError] = useState({
@@ -134,6 +145,7 @@ const SignUp: React.FC = () =>{
                 error={error.passwordConfirm}>
             </InputText>
             <ErrorMessage>{error.passwordConfirm}</ErrorMessage>
+            <Select options={OPTIONS} defaultValue={selectedName} onChange={onChangeSelection}></Select>
             <Button rect onClick={onSubmitSignUpForm}>
                 SignUp
             </Button>
