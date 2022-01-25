@@ -6,8 +6,6 @@ import Option from '../Option';
 
 const Select: React.FC<SelectProps> = ({...selectProps}) =>{
 
-console.log(selectProps.defaultValue);
-
     return (
         <Wrapper>
             <StyledSelect value={selectProps.defaultValue} options={selectProps.options} onChange={selectProps.onChange}>{

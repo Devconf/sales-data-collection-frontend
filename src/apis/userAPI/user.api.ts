@@ -27,6 +27,7 @@ interface SignUpProps {
   businessNum: String;
   email: string;
   password: string;
+  role:string
 }
 
 interface SignupApiReturnValues {
@@ -37,9 +38,9 @@ interface SignupApiReturnValues {
 export async function callSignUpApi(
   props: SignUpProps,
 ): Promise<SignupApiReturnValues> {
-  const { companyName, businessNum, email, password } = props;
+  const { companyName, businessNum, email, password, role} = props;
   try {
-    await api.post(`/signup`, { companyName, businessNum, email, password });
+    await api.post(`/signup`, { companyName, businessNum, email, password, role});
     return { success: true, error: undefined };
   } catch (error) {
     return { success: false, error };
