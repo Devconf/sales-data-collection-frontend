@@ -35,7 +35,7 @@ const SignUp: React.FC = () =>{
     });
 
     //default Select 정한다.
-    const [selectedName, onChangeSelection] = useSelect('USER');
+    const [role, onChangeSelection] = useSelect('USER');
 
 
     const [error, setError] = useState({
@@ -60,7 +60,7 @@ const SignUp: React.FC = () =>{
         onSuccess: ({ success, error }) => {
             if (success) {
             console.log('signUp Success!');
-            history.push('/sales');
+            history.push('/');
             resetSignUpInputs();
             resetError();
             } else {
@@ -89,9 +89,15 @@ const SignUp: React.FC = () =>{
             emailError === '' && 
             passwordError === '' &&
             passwordConfirmError === '') {
-            hadleSignUp({ companyName, businessNum, email, password });
+            hadleSignUp({ companyName, businessNum, email, password, role });
         }
       };
+
+    const onClickLoginPageButton = () =>{
+        history.push('/');
+        resetSignUpInputs();
+        resetError();
+    }
 
     return (
         <Wrapper>
@@ -145,9 +151,12 @@ const SignUp: React.FC = () =>{
                 error={error.passwordConfirm}>
             </InputText>
             <ErrorMessage>{error.passwordConfirm}</ErrorMessage>
-            <Select options={OPTIONS} defaultValue={selectedName} onChange={onChangeSelection}></Select>
+            <Select value={role} options={OPTIONS} defaultValue={role} onChange={onChangeSelection}></Select>
             <Button rect onClick={onSubmitSignUpForm}>
                 SignUp
+            </Button>
+            <Button rect onClick={onClickLoginPageButton}>
+                LogIn
             </Button>
         </Wrapper>
     );
