@@ -27,7 +27,6 @@ export const InputWrapper = styled.div`
     margin-bottom: 0.25rem;
     font-weight: bold;
     width: 220px;
-    float: right;
     `;
 
   

@@ -1,10 +1,10 @@
 import React from 'react';
 import Input from '@components/atoms/Input';
-import {Wrapper, Label, InputWrapper} from './SearchInput.style';
-import {SearchInputProps} from './SearchInput.type';
+import {Wrapper, Label, InputWrapper} from './InputWithLabel.style';
+import {InputWithLabelProps} from './InputWithLabel.type';
 
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const InputWithLabel: React.FC<InputWithLabelProps> = ({
                                                      label,
                                                      ...inputProps
                                                  }) => {
@@ -14,9 +14,8 @@ const SearchInput: React.FC<SearchInputProps> = ({
             <InputWrapper>
                 <Input {...inputProps} />
             </InputWrapper>
-
         </Wrapper>
     );
 };
 
-export default SearchInput;
+export default InputWithLabel;
