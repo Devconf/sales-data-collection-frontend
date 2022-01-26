@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
 
     colors: {
         bold: '#000000',
-        disabledbord: '#d9d9d9',
+        disabledbord: '#adadad',
         main: '#333333',
         sub: '#666666',
         button_main_color1: '#0BC7F0',
