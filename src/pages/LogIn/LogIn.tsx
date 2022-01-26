@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { callLoginApi } from '../../apis/userAPI/user.api';
-import InputText from '@components/molecules/InputText';
-import Button from '@components/atoms/Button'
+import LoginInput from '@components/molecules/LoginInput';
 import {Wrapper,Label,LogInWrapper,LogInButtonWrapper,SignUpButtonWrapper,ErrorMessage} from './LogIn.style';
 import { useMultipleInputs } from '../../hooks/UseMultipleInputs';
 import {
     emailValidation,
     passwordValidation,
   } from '../../lib/helpers/Validation';
+import LoginButton from '@components/molecules/LoginButton';
 
 const LogIn: React.FC = () =>{
     const history = useHistory();
@@ -68,7 +68,7 @@ const LogIn: React.FC = () =>{
         <Wrapper>
             <Label>로그인</Label>
             <LogInWrapper>
-                <InputText 
+                <LoginInput 
                     type='email' 
                     placeholder='이메일' 
                     text-align='center'
@@ -76,9 +76,9 @@ const LogIn: React.FC = () =>{
                     onChange={onChangeLoginInputs}
                     name="loginEmail"
                     error={error.email}>
-                </InputText>
+                </LoginInput>
                 <ErrorMessage>{error.email}</ErrorMessage>
-                <InputText 
+                <LoginInput 
                     type='password' 
                     placeholder='비밀번호' 
                     text-align='center'
@@ -86,18 +86,18 @@ const LogIn: React.FC = () =>{
                     onChange={onChangeLoginInputs}
                     name="loginPassword"
                     error={error.password}>
-                </InputText>
+                </LoginInput>
                 <ErrorMessage>{error.password}</ErrorMessage>
             </LogInWrapper>
             <LogInButtonWrapper>
-                <Button rect onClick={onSubmitLoginForm}>
+                <LoginButton rect onClick={onSubmitLoginForm}>
                     LogIn
-                </Button>
+                </LoginButton>
             </LogInButtonWrapper>
             <SignUpButtonWrapper>
-                <Button rect onClick={onClickSignUpButton}>
+                <LoginButton rect onClick={onClickSignUpButton}>
                     SignUp
-                </Button>
+                </LoginButton>
             </SignUpButtonWrapper>
         </Wrapper>
     );

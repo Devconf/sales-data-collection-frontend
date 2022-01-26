@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { callSignUpApi } from '../../apis/userAPI/user.api';
-import InputText from '@components/molecules/InputText';
+import LoginInput from '@components/molecules/LoginInput';
 import Select from '@components/atoms/Select';
 import Button from '@components/atoms/Button'
 import {Wrapper,ErrorMessage} from './SignUp.style';
@@ -101,7 +101,7 @@ const SignUp: React.FC = () =>{
 
     return (
         <Wrapper>
-            <InputText 
+            <LoginInput 
                 type='text' 
                 placeholder='회사명' 
                 text-align='center'
@@ -109,9 +109,9 @@ const SignUp: React.FC = () =>{
                 onChange={onChangeSignUpInputs}
                 name="companyName"
                 error={error.companyName}>
-            </InputText>
+            </LoginInput>
             <ErrorMessage>{error.companyName}</ErrorMessage>
-            <InputText 
+            <LoginInput 
                 type='text' 
                 placeholder='사업자번호' 
                 text-align='center'
@@ -119,9 +119,9 @@ const SignUp: React.FC = () =>{
                 onChange={onChangeSignUpInputs}
                 name="businessNum"
                 error={error.businessNum}>
-            </InputText>
+            </LoginInput>
             <ErrorMessage>{error.businessNum}</ErrorMessage>
-            <InputText 
+            <LoginInput 
                 type='email' 
                 placeholder='이메일' 
                 text-align='center'
@@ -129,9 +129,9 @@ const SignUp: React.FC = () =>{
                 onChange={onChangeSignUpInputs}
                 name="email"
                 error={error.email}>
-            </InputText>
+            </LoginInput>
             <ErrorMessage>{error.email}</ErrorMessage>
-            <InputText 
+            <LoginInput 
                 type='password' 
                 placeholder='비밀번호' 
                 text-align='center'
@@ -139,9 +139,9 @@ const SignUp: React.FC = () =>{
                 onChange={onChangeSignUpInputs}
                 name="password"
                 error={error.password}>
-            </InputText>
+            </LoginInput>
             <ErrorMessage>{error.password}</ErrorMessage>
-            <InputText 
+            <LoginInput 
                 type='password' 
                 placeholder='비밀번호 확인' 
                 text-align='center'
@@ -149,7 +149,7 @@ const SignUp: React.FC = () =>{
                 onChange={onChangeSignUpInputs}
                 name="passwordConfirm"
                 error={error.passwordConfirm}>
-            </InputText>
+            </LoginInput>
             <ErrorMessage>{error.passwordConfirm}</ErrorMessage>
             <Select value={role} options={OPTIONS} defaultValue={role} onChange={onChangeSelection}></Select>
             <Button rect onClick={onSubmitSignUpForm}>
