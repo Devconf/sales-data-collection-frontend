@@ -21,6 +21,7 @@ declare module 'styled-components' {
             placeholder: string;
             white: string;
             background: string;
+            background1: string;
             bgDivider: string;
             scrollBar: string;
             primary60: string;

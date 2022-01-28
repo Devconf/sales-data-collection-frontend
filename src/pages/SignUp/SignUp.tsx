@@ -7,7 +7,7 @@ import Select from '@components/atoms/Select';
 import Button from '@components/atoms/Button'
 import {Wrapper,ErrorMessage} from './SignUp.style';
 import { useMultipleInputs } from '../../hooks/UseMultipleInputs';
-import { useSelect } from '../../hooks/useSelect';
+import { useSelect } from '../../hooks/UseSelect';
 import {
     companyNameValidation,
     businessNumValidation,

@@ -5,7 +5,7 @@ export const ButtonWrapper =styled.div<SearchButtonProps>`
 line-height: 1.5715;
   position: relative;
   display: inline-block;
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
   text-align: center;
   background-image: none;
@@ -18,24 +18,24 @@ line-height: 1.5715;
   -ms-user-select: none;
   user-select: none;
   touch-action: manipulation;
-  height: 32px;
+  height: 27px;
   padding: 4px 16px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 32px;
-  color: ${({theme}) => theme.colors.white};
-  background: ${({theme}) => theme.colors.button_main_color1};
-  border-color: ${({theme}) => theme.colors.button_main_color1};
+  color: ${({theme}) => theme.colors.bold};
+  background: ${({theme}) => theme.colors.background};
+  border-color: ${({theme}) => theme.colors.background};
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   :focus {
-    color: ${({theme}) => theme.colors.white};
-    background: ${({theme}) => theme.colors.button_main_color2};
-    border-color: ${({theme}) => theme.colors.button_main_color2};
+    color: ${({theme}) => theme.colors.bold};
+    background: ${({theme}) => theme.colors.background1};
+    border-color: ${({theme}) => theme.colors.background1};
   }
   &:active {
-    color: ${({theme}) => theme.colors.white};
-    background: ${({theme}) => theme.colors.button_main_color2};
-    border-color: ${({theme}) => theme.colors.button_main_color2};
+    color: ${({theme}) => theme.colors.bold};
+    background: ${({theme}) => theme.colors.background1};
+    border-color: ${({theme}) => theme.colors.background1};
   }
 `
