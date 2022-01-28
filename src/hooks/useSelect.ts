@@ -1,9 +1,9 @@
 import { useState, useCallback, ChangeEvent } from 'react';
 
-type onChangType = (e: ChangeEvent<HTMLSelectElement>) => void;
+type onChangeType = (e: ChangeEvent<HTMLSelectElement>) => void;
 type useInputType = (
   initialState: string,
-) => [string, onChangType];
+) => [string, onChangeType];
 
 export const useSelect: useInputType = (
     initialState: string,

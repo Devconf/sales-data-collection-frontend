@@ -10,7 +10,7 @@ const MAIN = theme.colors.main;
 const HEADER1 = theme.fontSizes.header1;
 
 export const StyledHeaderBar = styled.div<HeaderProps>`
-  height: ${(props) => props.height || '80px'};
+  height: 10%;
   width: 100%;
   background-color: ${(props) => props.bgColor || 'rgba(255, 255, 255, 0.6)'};
   backdrop-filter: blur(4px);
@@ -30,7 +30,7 @@ export const StyledHeaderBar = styled.div<HeaderProps>`
 
 export const StyledTitle = styled.div<HeaderProps>`
   width: 90%;
-  font-weight: bold;
+  font-weight: normal;
   color: ${(props) => props.color || MAIN};
   font-size: ${(props) => props.titleSize || HEADER1};
   text-align: left;

@@ -6,12 +6,12 @@ import { SearchProps } from '@components/organisms/Search/Search.type';
 
 
 
-const Search: React.FC<SearchProps>= ({children,...searchProps})=>{
+const Search: React.FC<SearchProps>= ({...searchProps})=>{
 
     return(
         <Wrapper>
             <InputWithLabel {...searchProps}></InputWithLabel>
-            <SearchButton>{children}</SearchButton>
+            <SearchButton onClick={searchProps.onButtonClick}>검색</SearchButton>
         </Wrapper>
     )
 }

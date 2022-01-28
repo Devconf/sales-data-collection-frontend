@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
 
     colors: {
         bold: '#000000',
-        disabledbord: '#adadad',
+        disabledbord: '#b0b0b0',
         main: '#333333',
         sub: '#666666',
         button_main_color1: '#0BC7F0',
@@ -21,7 +21,8 @@ const theme: DefaultTheme = {
         button_sub_color2: '#E3E3E3',
         placeholder: '#999999',
         white: '#ffffff',
-        background: '#fafafa',
+        background: '#adadad',
+        background1: '#c2c2c2',
         bgDivider: '#f0f0f0',
         scrollBar: '#c4c4c4',
         primary60: '#006644',
