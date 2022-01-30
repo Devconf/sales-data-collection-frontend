@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle } from 'react';
+import React, { useImperativeHandle } from 'react';
 import { TableInstance, useFilters, useRowSelect, useSortBy, useTable } from 'react-table';
 import { StyledTable, Td, Th, Tr } from './Table.style';
 import { TableDataType, TableProps } from './Table.type';
@@ -20,7 +20,7 @@ const Table = React.forwardRef<TableInstance<TableDataType>,TableProps>(
             getTableBodyProps,
             headerGroups,
             rows,
-            prepareRow
+            prepareRow,
           } = instance;
 
           /*useEffect(() => {
