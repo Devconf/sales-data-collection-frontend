@@ -23,7 +23,7 @@ const Sales: React.FC =()=>{
 
     useEffect(() =>{
         console.log("hello");
-        handlePage(1);
+        handlePage({page});
     },[]);
 
     const { mutateAsync: handlePage } = useMutation(getUserListApi, {

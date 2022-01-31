@@ -13,8 +13,13 @@ interface UserInfoProps {
     button: null;
 }
 
-export async function  getUserListApi(page:number):   
+interface PageProps{
+    page:number;
+}
+
+export async function  getUserListApi(props:PageProps):   
     Promise<GetUserListApiReturnValues> {
+        const {page} = props;
         try {
           const response = await api.get('/sales/list?page='+page);
           return { success: true, error: undefined, userList: response.data.userList};

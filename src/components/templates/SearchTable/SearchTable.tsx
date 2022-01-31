@@ -4,7 +4,7 @@ import {
     TableColumnType,
     TableDataType,
   } from '@components/atoms/Table/Table.type';
-import { SearchWrapper ,TableWrapper } from './SearchTable.style';
+import { SearchWrapper ,TableHeader, TableBody } from './SearchTable.style';
 import Search from '@components/organisms/Search';
 import { TableInstance } from 'react-table';
 import Table from '@components/atoms/Table/Table';
@@ -26,30 +26,41 @@ const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({
         console.log(companyName);
     }
 
+    const onClickBulkRequestButton =() =>{
+        //
+    }
+
+    const onClickRequestButton =() =>{
+        //
+    }
+
     data.map((d)=>{
-        d.button = <SearchButton onClick={onClickSearchButton}> 요청</SearchButton>
+        d.button = <SearchButton onClick={onClickRequestButton}> 요청</SearchButton>
         return d;
     })
 
     return(
         <>
-            <SearchWrapper>
-                <Search 
-                    label={label} 
-                    placeholder={placeholder} 
-                    value={companyName}
-                    name="companyName"
-                    onChange={onChangeSearchInput}
-                    onButtonClick={(onClickSearchButton)}
-                    >
-                </Search>      
-            </SearchWrapper>
-            <TableWrapper>
+            <TableHeader>
+                <SearchWrapper>
+                    <Search 
+                        label={label} 
+                        placeholder={placeholder} 
+                        value={companyName}
+                        name="companyName"
+                        onChange={onChangeSearchInput}
+                        onButtonClick={(onClickSearchButton)}
+                        >
+                    </Search>
+                    <SearchButton onClick={onClickBulkRequestButton}>일괄요청</SearchButton>      
+                </SearchWrapper>
+            </TableHeader>
+            <TableBody>
                 <Table 
                 columns={columns}
                 data={data}
                 ref={tableInstance}/>
-            </TableWrapper>
+            </TableBody>
         </>
     );
 }
