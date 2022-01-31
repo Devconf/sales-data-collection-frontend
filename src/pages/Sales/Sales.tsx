@@ -42,6 +42,10 @@ const Sales: React.FC =()=>{
     const columns: TableColumnType[] = React.useMemo(
         () => [
           {
+            Header: 'ID',
+            accessor: 'id'
+          },
+          {
             Header: '회사명',
             accessor: 'companyName',
           },

@@ -7,6 +7,7 @@ interface GetUserListApiReturnValues {
 }
 
 interface UserInfoProps {
+    id:number;
     comapnyName: string;
     businessNum: string;
     email: string;

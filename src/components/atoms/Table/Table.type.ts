@@ -1,6 +1,7 @@
 import React from 'react';
 
 export type TableDataType = {
+    id:number;
     companyName: string;
     businessNum: string;
     email: string;    
