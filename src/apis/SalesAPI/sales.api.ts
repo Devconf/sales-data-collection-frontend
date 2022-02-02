@@ -29,3 +29,34 @@ export async function  getUserListApi(props:PageProps):
         }
       }
 
+
+interface SendMailReturnValues {
+    success: boolean,
+    error: unknown
+}
+
+interface MailProps{
+    id:number;
+}
+
+export async function  sendMailApi(props:MailProps):   
+    Promise<SendMailReturnValues> {
+        const {id} = props;
+        try {
+            await api.get('/sales/sendEmail?id='+id);
+            return { success: true, error: undefined};
+        } catch (error) {
+            return { success: false, error};
+        }
+    }
+
+export async function  sendMailsApi():   
+    Promise<SendMailReturnValues> {
+        try {
+            await api.get('/sales/sendEmails');
+            return { success: true, error: undefined};
+        } catch (error) {
+            return { success: false, error};
+        }
+      }
+

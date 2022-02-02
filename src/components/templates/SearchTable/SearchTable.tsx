@@ -10,6 +10,8 @@ import { TableInstance } from 'react-table';
 import Table from '@components/atoms/Table/Table';
 import { useInput } from '../../../hooks/UseInput';
 import SearchButton from '@components/molecules/SearchButton';
+import { useMutation } from 'react-query';
+import { sendMailApi ,sendMailsApi } from '../../../apis/SalesAPI/sales.api';
 
 const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({columns,data,label,placeholder}) =>{
 
@@ -20,6 +22,26 @@ const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({
         {companyName: ''}
     );
 
+    const { mutateAsync: handleSendMail } = useMutation(sendMailApi, {
+        onSuccess: ({ success, error }) => {
+            if (success) {
+            console.log('Mail Send OK!');
+            } else {
+            console.log('Mail Send Fail: ', error);
+            }
+        },
+    });
+
+    const { mutateAsync: handleSendMails } = useMutation(sendMailsApi, {
+        onSuccess: ({ success, error }) => {
+            if (success) {
+            console.log('Mail Send OK!');
+            } else {
+            console.log('Mail Send Fail: ', error);
+            }
+        },
+    });
+
     const onClickSearchButton = ()=>{
         tableInstance.current.setFilter('companyName',companyName);
         resetSearchInput();
@@ -27,15 +49,15 @@ const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({
     }
 
     const onClickBulkRequestButton =() =>{
-        //
+        handleSendMails();
     }
 
-    const onClickRequestButton =() =>{
-        //
+    const onClickRequestButton =(id:number) =>{
+        handleSendMail({id});
     }
 
     data.map((d)=>{
-        d.button = <SearchButton onClick={onClickRequestButton}> 요청</SearchButton>
+        d.button = <SearchButton onClick={()=>{onClickRequestButton(d.id)}}> 요청</SearchButton>
         return d;
     })
 
@@ -49,7 +71,7 @@ const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({
                         value={companyName}
                         name="companyName"
                         onChange={onChangeSearchInput}
-                        onButtonClick={(onClickSearchButton)}
+                        onButtonClick={onClickSearchButton}
                         >
                     </Search>
                     <SearchButton onClick={onClickBulkRequestButton}>일괄요청</SearchButton>      

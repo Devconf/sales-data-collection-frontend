@@ -24,7 +24,7 @@ const Sales: React.FC =()=>{
     useEffect(() =>{
         console.log("hello");
         handlePage({page});
-    },[]);
+    },[page]);
 
     const { mutateAsync: handlePage } = useMutation(getUserListApi, {
         onSuccess: ({ success, error, userList}) => {
