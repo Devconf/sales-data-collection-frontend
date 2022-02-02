@@ -23,8 +23,8 @@ const Sales: React.FC =()=>{
 
     useEffect(() =>{
         console.log("hello");
-        handlePage(1);
-    },[]);
+        handlePage({page});
+    },[page]);
 
     const { mutateAsync: handlePage } = useMutation(getUserListApi, {
         onSuccess: ({ success, error, userList}) => {
@@ -41,6 +41,10 @@ const Sales: React.FC =()=>{
 
     const columns: TableColumnType[] = React.useMemo(
         () => [
+          {
+            Header: 'ID',
+            accessor: 'id'
+          },
           {
             Header: '회사명',
             accessor: 'companyName',
