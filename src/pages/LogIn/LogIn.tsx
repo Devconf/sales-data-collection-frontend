@@ -10,6 +10,8 @@ import {
     passwordValidation,
   } from '../../lib/helpers/Validation';
 import LoginButton from '@components/molecules/LoginButton';
+import { useRecoilState } from 'recoil';
+import { UserState } from '../../states/UserState';
 
 const LogIn: React.FC = () =>{
     const history = useHistory();
@@ -20,6 +22,7 @@ const LogIn: React.FC = () =>{
       loginPassword: '',
     });
 
+    const [user,setUser] = useRecoilState(UserState)
 
     const [error, setError] = useState({
         email: '',
@@ -34,12 +37,13 @@ const LogIn: React.FC = () =>{
     };
 
     const { mutateAsync: handleLogin } = useMutation(callLoginApi, {
-        onSuccess: ({ success, error }) => {
+        onSuccess: ({response, success, error }) => {
             if (success) {
-            console.log('login Success!');
-            history.push('/sales');
-            resetLoginInputs();
-            resetError();
+                setUser(response);
+                console.log('login Success!');
+                history.push('/sales');
+                resetLoginInputs();
+                resetError();
             } else {
             console.log('login failed: ', error);
             }

@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^5.9.0",
+    "@devexpress/dx-react-core": "^3.0.0",
+    "@devexpress/dx-react-grid": "^3.0.0",
+    "@devexpress/dx-react-grid-material-ui": "^3.0.0",
     "antd": "^4.17.1",
     "axios": "^0.24.0",
     "eslint-config-react-app": "^7.0.0",
@@ -13,6 +16,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "^5.0.0",
     "react-table": "^7.7.0",
+    "recoil": "^0.6.1",
     "styled-components": "^5.3.3",
     "styled-normalize": "^8.0.7",
     "typescript": "^4.4.3",
@@ -61,6 +65,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "2.4.1"
   }
 }
