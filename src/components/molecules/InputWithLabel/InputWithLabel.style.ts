@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
     display: inline-block;
     background-color: ${({theme}) => theme.colors.white};
     border: 1px solid ${({theme}) => theme.colors.white};
-    width: 280px;
+    padding: 0px 5px 0px 5px;
+    width: auto;
     `;
 
 export const Label = styled.label`
@@ -14,7 +15,8 @@ export const Label = styled.label`
     color: ${({theme}) => theme.colors.main};
     margin-bottom: 0.25rem;
     font-weight: bold;
-    width: 50px;
+    width: auto;
+    padding: 0px 5px 0px 5px;
     float: left;
     position: relative;
     top: 9px;
@@ -26,7 +28,8 @@ export const InputWrapper = styled.div`
     color: ${({theme}) => theme.colors.main};
     margin-bottom: 0.25rem;
     font-weight: bold;
-    width: 220px;
+    width: auto;
+    padding: 0px 5px 0px 5px;
     `;
 
   
