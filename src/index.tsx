@@ -7,16 +7,19 @@ import Routes from '@pages/Routes';
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyle';
 import FontStyles from '@styles/fonts/fonts';
+import { RecoilRoot } from 'recoil';
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <FontStyles />
-      <GlobalStyle />
-      <Routes />
-    </ThemeProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+        <FontStyles />
+        <GlobalStyle />
+        <Routes />
+        </ThemeProvider>
+    </RecoilRoot>
   </QueryClientProvider>,
   document.getElementById('root'),
 );

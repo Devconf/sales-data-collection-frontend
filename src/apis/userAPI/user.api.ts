@@ -6,8 +6,16 @@ interface LoginApiProps {
 }
 
 interface LoginApiReturnValues {
+  response: AuthorizedUserProps;
   success: boolean;
   error: unknown;
+}
+
+interface AuthorizedUserProps {
+    comapnyName: string;
+    businessNum: string;
+    email: string;
+    token: string;
 }
 
 export async function callLoginApi(
@@ -15,10 +23,16 @@ export async function callLoginApi(
 ): Promise<LoginApiReturnValues> {
   const { loginEmail, loginPassword } = props;
   try {
-    await api.post(`/login`, {email: loginEmail,password: loginPassword });
-    return { success: true, error: undefined };
+     const response = await api.post(`/login`, {email: loginEmail,password: loginPassword });
+    return { 
+        response: response.data,
+        success: true, 
+        error: undefined 
+    };
   } catch (error) {
-    return { success: false, error };
+    return { 
+        response: null,
+        success: false, error };
   }
 }
 
