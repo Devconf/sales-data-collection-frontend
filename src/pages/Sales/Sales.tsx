@@ -4,10 +4,8 @@ import Nevigation from '@components/templates/Nevigation';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Wrapper } from './Sales.style';
-import Main from '@components/templates/Main';
 import SearchTable from '@components/templates/SearchTable';
 import { TableColumnType } from '@components/atoms/Table/Table.type';
-import { data } from '@pages/dummyDate';
 import { getUserListApi } from '../../apis/SalesAPI/sales.api';
 import { useMutation } from 'react-query';
 
@@ -71,12 +69,7 @@ const Sales: React.FC =()=>{
                 <Button onClick={onClickLogOutButton}>로그아웃</Button>
             </HeaderBar>
             <Nevigation></Nevigation>
-            <Main title='매출액 자료 요청' children={
-               <SearchTable label='검색' placeholder='회사명을 입력하세요' columns={columns} data={user}>
-                   검색
-               </SearchTable>
-                
-            }></Main>
+            <SearchTable label='검색' placeholder='회사명을 입력하세요' columns={columns} data={user}/>
         </Wrapper>
     )
 }

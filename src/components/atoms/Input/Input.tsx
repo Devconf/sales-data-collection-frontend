@@ -4,6 +4,7 @@ import {InputProps} from './Input.type';
 
 const Input: React.FC<InputProps> = ({
                                          disabled,
+                                         readOnly,
                                          type,
                                          placeholder,
                                          value,
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = ({
         <>
             <StyledInput
                 disabled={disabled}
+                readOnly={readOnly}
                 placeholder={placeholder}
                 type={type}
                 value={value}
