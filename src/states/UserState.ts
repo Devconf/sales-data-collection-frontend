@@ -7,4 +7,4 @@ export const UserState = atom({
     key: 'userState',
     default: null,
     effects_UNSTABLE:[persistAtom]
-})
+});

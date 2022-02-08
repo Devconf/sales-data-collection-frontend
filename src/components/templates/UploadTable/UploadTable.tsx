@@ -12,8 +12,21 @@ import Input from '../../atoms/Input/Input';
 import UploadButton from '../../molecules/UploadButton';
 import { IntegratedSelection, SelectionState } from '@devexpress/dx-react-grid';
 import { Message } from '@mui/icons-material';
+import SubmitButton from '../../molecules/SubmitButton';
+import { useMutation } from 'react-query';
+import { uploadFileApi } from '../../../apis/SalesAPI/sales.api';
 
 const UploadTable: React.FC<UploadTableProps>= () =>{
+
+    
+    const [selection, setSelection] = useState([]);
+
+    const [files, setFiles] = useState([]);
+
+    const LoginUser = useRecoilValue(UserState);
+    
+    const token = LoginUser.token;
+
 
     const [columns] = useState([
         { name: 'FileName', title: '파일명' },
@@ -21,11 +34,6 @@ const UploadTable: React.FC<UploadTableProps>= () =>{
         { name: 'LastModifyDate', title: '마지막 수정 날짜' },
         { name: 'UploadDate', title: '업로드 날짜' },
       ]);
-    
-    const [selection, setSelection] = useState([]);
-
-    const [files, setFiles] = useState([]);
-
 
     const rowData = files.map((file)=>{
         const modDate = new Date(file.lastModified);
@@ -38,7 +46,36 @@ const UploadTable: React.FC<UploadTableProps>= () =>{
         }
     });
 
-    const LoginUser = useRecoilValue(UserState);
+    
+
+    const onClickSubmit = () =>{
+        hadleUploadFile({token, files});
+        console.log("제출");
+    }
+
+    const onClickRemove = () => {
+        let removeFile = [];
+        selection.forEach(idx =>{
+            removeFile.push(files[idx]);
+        });
+        
+        removeFile.forEach(toRemove =>{
+            const removeIdx = files.findIndex(file => file === toRemove);
+            if (removeIdx > -1) files.splice(removeIdx, 1);
+        });
+        setFiles([...files]);
+        setSelection([]);
+    };
+
+    const { mutateAsync: hadleUploadFile } = useMutation(uploadFileApi, {
+        onSuccess: ({ success, error }) => {
+            if (success) {
+                console.log('uploadFile Success!');
+            } else {
+                console.log('uploadFile failed: ', error);
+            }
+        },
+        });
 
     return(
         <MainFrame header ="매출액 자료 업로드" body={
@@ -51,7 +88,12 @@ const UploadTable: React.FC<UploadTableProps>= () =>{
                         <InputWithLabel label='사업자번호' value={LoginUser.businessNum} readOnly ={true}></InputWithLabel>
                     </LabelWrapper>
                 </Wrapper>
-                <UploadButton type='file' files={files} setFiles={setFiles} removeFiles={selection} setSelection={setSelection}/>
+                <UploadButton 
+                    type='file' 
+                    files={files} 
+                    setFiles={setFiles} 
+                    onClickRemove={onClickRemove}
+                    onClickSubmit={onClickSubmit}/>
                 <Paper>
                     <Grid
                         columns={columns}

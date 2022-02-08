@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { ButtonWrapper, StyledInput, Wrapper } from './UploadButton.style';
+import { ButtonWrapper, StyledInput, SubmitButtonWrapper, Wrapper } from './UploadButton.style';
 import { UploadButtonProps } from './UploadButton.type';
 import Button from '@components/atoms/Button';
 
-const UploadButton: React.FC<UploadButtonProps> = ({files, setFiles, removeFiles, setSelection})=>{
+const UploadButton: React.FC<UploadButtonProps> = ({files, setFiles, onClickRemove, onClickSubmit})=>{
 
     const hiddenFileInput = React.useRef(null);
 
-    const handleUploadClick = () => {
+    const onClickUpload = () => {
         hiddenFileInput.current.click();
     };
-
-    const handleRemoveClick = () => {
-        let removeFile = [];
-        removeFiles.forEach(idx =>{
-            removeFile.push(files[idx]);
-        });
-        
-        removeFile.forEach(toRemove =>{
-            const removeIdx = files.findIndex(file => file === toRemove);
-            if (removeIdx > -1) files.splice(removeIdx, 1);
-        });
-
-        setFiles([...files]);
-        setSelection([]);
-    };
-
 
     const handleChange = (event) => {
         const uploadFile = event.target.files;
         if(uploadFile.length !== 0){
             if(checkFileExtention(uploadFile[0])){
                 setFiles([...files,uploadFile[0]]);
+                event.target.value = ''; // 이걸 해주지 않으면 업로드 파일 지우고 같은걸로 다시 올렸을겨웅 deadLock이 발생한다.
             }
             else{
                 alert("xlsx 또는 xls 파일만 업로드 가능합니다.")
@@ -50,15 +35,20 @@ const UploadButton: React.FC<UploadButtonProps> = ({files, setFiles, removeFiles
     return (
         <Wrapper>
             <ButtonWrapper>
-                <Button onClick={handleUploadClick}>
+                <Button onClick={onClickUpload}>
                     파일 업로드
                 </Button>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Button onClick={handleRemoveClick}>
+                <Button onClick={onClickRemove}>
                     선택 삭제
                 </Button>
             </ButtonWrapper>
+            <SubmitButtonWrapper>
+                <Button onClick={onClickSubmit}>
+                    제출
+                </Button>
+            </SubmitButtonWrapper>
             <StyledInput 
                 type="file"
                 ref={hiddenFileInput}
