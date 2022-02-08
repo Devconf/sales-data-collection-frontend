@@ -8,6 +8,8 @@ import SearchTable from '@components/templates/SearchTable';
 import { TableColumnType } from '@components/atoms/Table/Table.type';
 import { getUserListApi } from '../../apis/SalesAPI/sales.api';
 import { useMutation } from 'react-query';
+import { useRecoilValue } from 'recoil';
+import { UserState } from '../../states/UserState';
 
 const Sales: React.FC =()=>{
     const history = useHistory();
@@ -19,9 +21,13 @@ const Sales: React.FC =()=>{
     const [page,setPage] =useState(1);
     const [user, setUser] =useState([]);
 
+    const LoginUser = useRecoilValue(UserState);
+    
+    const token = LoginUser.token;
+
     useEffect(() =>{
         console.log("hello");
-        handlePage({page});
+        handlePage({token, page});
     },[page]);
 
     const { mutateAsync: handlePage } = useMutation(getUserListApi, {
