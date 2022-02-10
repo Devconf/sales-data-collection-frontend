@@ -15,6 +15,7 @@ interface AuthorizedUserProps {
     comapnyName: string;
     businessNum: string;
     email: string;
+    role: string;
     token: string;
 }
 

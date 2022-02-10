@@ -1,18 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
-import { Grid, Table, TableHeaderRow, TableSelection, VirtualTable } from '@devexpress/dx-react-grid-material-ui';
+import { Grid, Table, TableHeaderRow, TableSelection} from '@devexpress/dx-react-grid-material-ui';
 import MainFrame from '@components/atoms/MainFrame';
 import InputWithLabel from '@components/molecules/InputWithLabel/InputWithLabel';
-import SearchButton from '@components/molecules/SearchButton/SearchButton'
 import { useRecoilValue } from 'recoil';
 import { UserState } from '../../../states/UserState';
 import { BodyWrapper, LabelWrapper, Wrapper } from './UploadTable.style';
 import { UploadTableProps } from './UploadTable.type';
-import Input from '../../atoms/Input/Input';
 import UploadButton from '../../molecules/UploadButton';
 import { IntegratedSelection, SelectionState } from '@devexpress/dx-react-grid';
-import { Message } from '@mui/icons-material';
-import SubmitButton from '../../molecules/SubmitButton';
 import { useMutation } from 'react-query';
 import { uploadFileApi } from '../../../apis/SalesAPI/sales.api';
 
