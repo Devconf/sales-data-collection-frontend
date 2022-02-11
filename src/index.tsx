@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { ThemeProvider } from 'styled-components';
-import Routes from '@pages/Routes';
+import Routes from '@router/Routes';
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyle';
 import FontStyles from '@styles/fonts/fonts';

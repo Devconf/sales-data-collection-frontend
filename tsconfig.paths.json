@@ -7,6 +7,7 @@
         "@assets/*": ["./assets/*"],
         "@common/*": ["./common/*"],
         "@components/*": ["./components/*"],
+        "@router/*": ["./router/*"],
         "@pages/*": ["./pages/*"],
         "@styles/*": ["./lib/styles/*"]
       }

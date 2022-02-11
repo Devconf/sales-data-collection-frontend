@@ -6,7 +6,7 @@ export const Wrapper =styled.div`
     height : 60px;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled.label`
     text-decoration-line : none;
     font-size: 15pt;
     color: black;

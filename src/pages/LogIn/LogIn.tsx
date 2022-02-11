@@ -40,10 +40,19 @@ const LogIn: React.FC = () =>{
         onSuccess: ({response, success, error }) => {
             if (success) {
                 setUser(response);
-                console.log('login Success!');
-                history.push('/sales');
-                resetLoginInputs();
-                resetError();
+                if(response.role === 'ADMIN'){
+                    console.log('login Success!');
+                    history.push('/sales');
+                    resetLoginInputs();
+                    resetError();
+                }
+                else if(response.role === 'ADMIN'|| response.role === 'USER'){
+                    console.log('login Success!');
+                    history.push('/sales/upload');
+                    resetLoginInputs();
+                    resetError();
+                }
+                
             } else {
             console.log('login failed: ', error);
             }

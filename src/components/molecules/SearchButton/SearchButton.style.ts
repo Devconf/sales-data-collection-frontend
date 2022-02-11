@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { SearchButtonProps } from './SearchButton.type';
+import { ButtonProps } from '@components/atom/Button/Button.type';
 
-export const ButtonWrapper =styled.div<SearchButtonProps>`
+export const ButtonWrapper =styled.div<ButtonProps>`
 line-height: 1.5715;
   position: relative;
   display: inline-block;

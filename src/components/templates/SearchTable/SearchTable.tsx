@@ -10,6 +10,7 @@ import { TableInstance } from 'react-table';
 import Table from '@components/atoms/Table/Table';
 import { useInput } from '../../../hooks/UseInput';
 import SearchButton from '@components/molecules/SearchButton';
+import MainFrame from '@components/atoms/MainFrame';
 import { useMutation } from 'react-query';
 import { sendMailApi ,sendMailsApi } from '../../../apis/SalesAPI/sales.api';
 
@@ -62,28 +63,30 @@ const SearchTable: React.FC<SearchTableProps<TableColumnType,TableDataType>>= ({
     })
 
     return(
-        <>
+        <MainFrame header ="매출액 자료 요청" body={
+            <>
             <TableHeader>
                 <SearchWrapper>
-                    <Search 
-                        label={label} 
-                        placeholder={placeholder} 
+                    <Search
+                        label={label}
+                        placeholder={placeholder}
                         value={companyName}
                         name="companyName"
                         onChange={onChangeSearchInput}
                         onButtonClick={onClickSearchButton}
-                        >
+                    >
                     </Search>
-                    <SearchButton onClick={onClickBulkRequestButton}>일괄요청</SearchButton>      
+                    <SearchButton onClick={onClickBulkRequestButton}>일괄요청</SearchButton>
                 </SearchWrapper>
             </TableHeader>
             <TableBody>
-                <Table 
-                columns={columns}
-                data={data}
-                ref={tableInstance}/>
+                <Table
+                    columns={columns}
+                    data={data}
+                    ref={tableInstance} />
             </TableBody>
-        </>
+            </>
+        }/>
     );
 }
 
