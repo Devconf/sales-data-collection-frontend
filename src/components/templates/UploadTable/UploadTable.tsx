@@ -67,6 +67,7 @@ const UploadTable: React.FC<UploadTableProps>= () =>{
         onSuccess: ({ success, error }) => {
             if (success) {
                 console.log('uploadFile Success!');
+                setFiles([]);
             } else {
                 console.log('uploadFile failed: ', error);
             }
