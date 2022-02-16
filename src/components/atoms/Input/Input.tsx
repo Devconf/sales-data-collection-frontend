@@ -12,6 +12,7 @@ const Input: React.FC<InputProps> = ({
                                          onPressEnter,
                                          name,
                                          error,
+                                         onClick
                                      }) => {
     const onPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'Enter' && onPressEnter) {
@@ -30,6 +31,7 @@ const Input: React.FC<InputProps> = ({
                 onKeyDown={onPress}
                 name={name}
                 error={error}
+                onClick={onClick}
             />
         </>
     );

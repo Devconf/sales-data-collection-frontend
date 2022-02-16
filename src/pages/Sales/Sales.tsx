@@ -15,7 +15,9 @@ const Sales: React.FC =()=>{
     const history = useHistory();
 
     const onClickLogOutButton =() =>{
-        history.push("/");
+        localStorage.removeItem("recoil-persist");
+        history.push("/login");
+        window.location.reload();
     }
 
     const [page,setPage] =useState(1);

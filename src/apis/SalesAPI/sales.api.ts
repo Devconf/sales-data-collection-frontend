@@ -23,7 +23,7 @@ export async function  getUserListApi(props:PageProps):
 Promise<GetUserListApiReturnValues> {
     const {token,page} = props;
     try {
-        const response = await api.get('/sales/list?page='+page,{headers:{'x-auth-token': token}});
+        const response = await api.get('/saleManage/users?page='+page,{headers:{'x-auth-token': token}});
         return { success: true, error: undefined, userList: response.data.userList};
     } catch (error) {
         return { success: false, error, userList:[]};
@@ -44,7 +44,7 @@ export async function  sendMailApi(props:MailProps):
 Promise<SendMailReturnValues> {
     const {id} = props;
     try {
-        await api.get('/sales/sendEmail?id='+id);
+        await api.get('/saleManage/email?id='+id);
         return { success: true, error: undefined};
     } catch (error) {
         return { success: false, error};
@@ -54,7 +54,7 @@ Promise<SendMailReturnValues> {
 export async function  sendMailsApi():   
 Promise<SendMailReturnValues> {
     try {
-        await api.get('/sales/sendEmails');
+        await api.get('/saleManage/email/all');
         return { success: true, error: undefined};
     } catch (error) {
         return { success: false, error};
@@ -85,10 +85,82 @@ Promise<UploadFileReturnValues> {
     }
 
     try {
-        await api.post('/sales/upload',formData,{headers:{'x-auth-token': token}});
+        await api.post('/saleManage/upload',formData,{headers:{'x-auth-token': token}});
         return { success: true, error: undefined};
     } catch (error) {
         return { success: false, error};
     }
 }
 
+interface GetSalesProps{
+    start: Date;
+    end: Date;
+    token: string;    
+}
+
+interface GetSalesReturnValues {
+    success: boolean;
+    error: unknown;
+    saleList: Array<SaleInfoProps>;
+  }
+
+interface SaleInfoProps {
+    id:number,
+    companyName: string,
+    businessNum: string,
+    email: string,
+    totalSales: number,
+    operatingProfit: number,
+    netIncome: number,
+    date: Date,
+    accessToken: string
+}
+
+export async function  getSalesApi(props:GetSalesProps):   
+Promise<GetSalesReturnValues> {
+    const {start, end, token} = props;
+    const startAt =start.toLocaleDateString("fr-CA");
+    const endAt =end.toLocaleDateString("fr-CA");
+
+    try {
+        const response =await api.post('/saleManage/download',{startAt, endAt},{headers:{'x-auth-token': token}});
+        return { success: true, error: undefined, saleList: response.data};
+    } catch (error) {
+        return { success: false, error, saleList:[]};
+    }
+}
+
+export async function  getAllSalesApi(props:GetSalesProps):   
+Promise<GetSalesReturnValues> {
+    const {start, end, token} = props;
+    const startAt =start.toLocaleDateString("fr-CA");
+    const endAt =end.toLocaleDateString("fr-CA");
+
+    try {
+        const response =await api.post('/saleManage/download/all',{startAt, endAt},{headers:{'x-auth-token': token}});
+        return { success: true, error: undefined, saleList: response.data};
+    } catch (error) {
+        return { success: false, error, saleList:[]};
+    }
+}
+
+interface InviteProps {
+    accessToken: string
+}
+
+interface SendTempInviteMailReturnValues {
+    success: boolean,
+    error: unknown
+}
+
+export async function sendTempInviteMailApi(props:InviteProps):
+Promise<SendTempInviteMailReturnValues> {
+    const {accessToken} = props;
+
+    try {
+        await api.get('/saleManage/email/invite?accessToken='+accessToken);
+        return { success: true, error: undefined};
+    } catch (error) {
+        return { success: false, error};
+    }
+}
