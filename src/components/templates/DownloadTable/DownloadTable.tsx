@@ -39,6 +39,7 @@ const DownloadTable: React.FC<DownloadTableProps> = () =>{
     },[]);
 
     const [columns] = useState([
+        { name: 'userId', title: '대표회사 코드' },
         { name: 'companyName', title: '회사명' },
         { name: 'businessNum', title: '사업자번호' },
         { name: 'email', title: '이메일' },
@@ -50,6 +51,7 @@ const DownloadTable: React.FC<DownloadTableProps> = () =>{
         ]);
 
     const [downloadColumns] = useState([
+        { name: 'userId', title: '대표회사 코드' },
         { name: 'companyName', title: '회사명' },
         { name: 'businessNum', title: '사업자번호' },
         { name: 'email', title: '이메일' },
@@ -73,8 +75,8 @@ const DownloadTable: React.FC<DownloadTableProps> = () =>{
         onSuccess: ({ success, error, saleList }) => {
             if (success) {
                 console.log('Success!');
-                console.log(saleList);
                 setRows(saleList);
+                console.log(saleList);
             } else {
                 console.log('Failed: ', error);
             }
@@ -105,8 +107,10 @@ const DownloadTable: React.FC<DownloadTableProps> = () =>{
         onSuccess: ({ success, error }) => {
             if (success) {
                 console.log('Success!');
+                alert("요청 완료 하였습니다.")
             } else {
                 console.log('Failed: ', error);
+                alert("요청 실패 하였습니다.")
             }
         },
     });
