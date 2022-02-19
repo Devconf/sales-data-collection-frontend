@@ -41,6 +41,24 @@ const emailValidation = (email: string) => {
       return '사업자 번호 형식은 "xxx-xx-xxxxx" 입니다..';
     else return '';
   };
+
+  const numberValidation = (num: number) => {
+    const numExp = /^([-0-9]+)$/;
+
+    if (num.toString() === "") return '매출액을 입력해주세요';
+    else if (!numExp.test(num.toString()))
+      return '숫자만 입력 가능합니다.';
+    else return '';
+  };
+
+  const dateValidation = (date: any) => {
+    const dateExp = /^([12][0-9]{3}[/])+(0[1-9]|1[0-2])$/;
+
+    if (date === "") return '기준일자(년월)을 입력해주세요';
+    else if (!dateExp.test(date))
+      return '숫자만 입력 가능합니다.';
+    else return '';
+  };
   
   export {
     emailValidation,
@@ -48,4 +66,6 @@ const emailValidation = (email: string) => {
     passwordConfirmValidation,
     companyNameValidation,
     businessNumValidation,
+    numberValidation,
+    dateValidation,
   };

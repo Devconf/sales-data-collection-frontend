@@ -1,8 +1,8 @@
 import api from './../index';
 
 interface GetUserListApiReturnValues {
-    success: boolean,
-    error: unknown,
+    success: boolean;
+    error: unknown;
     userList: Array<UserInfoProps>;
 }
 
@@ -32,8 +32,8 @@ Promise<GetUserListApiReturnValues> {
 
 
 interface SendMailReturnValues {
-    success: boolean,
-    error: unknown
+    success: boolean;
+    error: unknown;
 }
 
 interface MailProps{
@@ -105,15 +105,16 @@ interface GetSalesReturnValues {
   }
 
 interface SaleInfoProps {
-    id:number,
-    companyName: string,
-    businessNum: string,
-    email: string,
-    totalSales: number,
-    operatingProfit: number,
-    netIncome: number,
-    date: Date,
-    accessToken: string
+    userId:number;
+    saleManageId: number;
+    companyName: string;
+    businessNum: string;
+    email: string;
+    totalSales: number;
+    operatingProfit: number;
+    netIncome: number;
+    date: Date;
+    accessToken: string;
 }
 
 export async function  getSalesApi(props:GetSalesProps):   
@@ -145,12 +146,12 @@ Promise<GetSalesReturnValues> {
 }
 
 interface InviteProps {
-    accessToken: string
+    accessToken: string;
 }
 
 interface SendTempInviteMailReturnValues {
-    success: boolean,
-    error: unknown
+    success: boolean;
+    error: unknown;
 }
 
 export async function sendTempInviteMailApi(props:InviteProps):
@@ -158,7 +159,62 @@ Promise<SendTempInviteMailReturnValues> {
     const {accessToken} = props;
 
     try {
-        await api.get('/saleManage/email/invite?accessToken='+accessToken);
+        await api.get('/saleManage/email/invite/'+accessToken);
+        return { success: true, error: undefined};
+    } catch (error) {
+        return { success: false, error};
+    }
+}
+
+interface AccessTokenProps {
+    accessToken: string | string[];
+}
+
+
+export interface GetSaleWithAccessTokenReturnValues {
+    success: boolean;
+    error: unknown;
+    saleInfo: SaleInfoProps;
+}
+
+export async function getSaleWithAccessTokenApi(props:AccessTokenProps):
+Promise<GetSaleWithAccessTokenReturnValues> {
+    const {accessToken} = props;
+
+    try {
+        const response = await api.get('/saleManage/sale?accessToken='+accessToken);
+        return { success: true, error: undefined, saleInfo: response.data};
+    } catch (error) {
+        return { success: false, error, saleInfo: null};
+    }
+}
+
+interface SaleUpdateProps {
+    saleManageId: number;
+    companyName: string;
+    businessNum: string;
+    email: string;
+    totalSales: number;
+    netIncome: number;
+    operatingProfit: number;
+    date: string;
+    accessToken: string | string[];
+}
+
+
+export interface GetSaleUpdatedReturnValues {
+    success: boolean,
+    error: unknown,
+}
+
+export async function saleUpdatedApi(props:SaleUpdateProps):
+Promise<GetSaleUpdatedReturnValues> {
+    const {saleManageId, companyName, businessNum, email, totalSales, netIncome, operatingProfit, date, accessToken} = props;
+
+    console.log(date);
+
+    try {
+        await api.put('/saleManage/'+saleManageId.toString() +'/sale/' + accessToken,{companyName, businessNum, email, totalSales, netIncome, operatingProfit, date});
         return { success: true, error: undefined};
     } catch (error) {
         return { success: false, error};

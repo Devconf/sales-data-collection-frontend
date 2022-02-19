@@ -3,11 +3,11 @@ import { useState, useCallback, ChangeEvent } from 'react';
 type onChangeType = (e: ChangeEvent<HTMLInputElement>) => void;
 type onResetType = () => void;
 type useInputType = (
-  initialState: Record<string, string>,
-) => [Record<string, string>, onChangeType, onResetType];
+  initialState: Record<any, any>,
+) => [Record<any, any>, onChangeType, onResetType];
 
 export const useMultipleInputs: useInputType = (
-  initialForm: Record<string, string>,
+  initialForm: Record<any, any>,
 ) => {
   const [form, setForm] = useState(initialForm);
 

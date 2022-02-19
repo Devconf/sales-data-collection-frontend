@@ -5,6 +5,7 @@ import LogIn from '@pages/LogIn';
 import SignUp from '@pages/SignUp';
 import Sales from '@pages/Sales';
 import Upload from '@pages/Upload';
+import SaleModify from '@pages/SaleModify';
 import { PrivateRoute } from './PrivateRoutes';
 import { useRecoilValue } from 'recoil';
 import { UserState } from '../states/UserState';
@@ -49,6 +50,7 @@ const Routes: React.FC = () => {
                 <Route path={'/'} exact component={Main} />
                 <Route path={'/login'} exact component={LogIn} />
                 <Route path={'/signUp'} exact component={SignUp} />
+                <Route path={'/saleManage/sale'} exact component={SaleModify} />
             </BrowserRouter>
         );
     }

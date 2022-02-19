@@ -42,7 +42,7 @@ interface SignUpProps {
   businessNum: String;
   email: string;
   password: string;
-  role:string
+  role:string;
 }
 
 interface SignupApiReturnValues {

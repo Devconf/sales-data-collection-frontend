@@ -19,7 +19,7 @@ import {
 
 const OPTIONS=  [
 	{ value: "ADMIN", name: "본사" },
-	{ value: "USER", name: "자회사" },
+	{ value: "USER", name: "대표자회사" },
 ];
 
 const SignUp: React.FC = () =>{
